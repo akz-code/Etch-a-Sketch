@@ -68,11 +68,10 @@ main {
 
 .itemSketch {
   aspect-ratio: 1/1;
-  border: solid 1px rgba(0, 0, 0, 0.171);
 }
 
 .itemSketch:hover{
-  background-color: rgba(0, 255, 255, 0.123);
+  background-color: rgba(0, 255, 255, 0.774);
 }
 
 footer {
@@ -80,6 +79,8 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+
 @media (max-width: 1000px){
   .sketchContainer {
     width: 60%;

@@ -1,11 +1,11 @@
 // Important variables
 
 const eraser = document.querySelector(".eraser");
-const selectColor = document.querySelector(".selectColor");
+const selectColor = document.querySelector("#selectColor");
+const buttonBlack = document.querySelector(".black");
 const randomColor = document.querySelector(".randomColor");
 
-let colorSelection = [];
-let selector = false;
+let colorSelection = "black";
 
 const sketchContainer = document.querySelector("#sketchContainer");
 const slider = document.querySelector("#slider");
@@ -32,7 +32,7 @@ const createDivs = function (sliderValor) {
     });
     itemSketch.addEventListener("mousemove", (e) => {
       if (mousedown) {
-        itemSketch.style.background = "black";
+        paintDiv(itemSketch, colorSelection);
       }
     });
 
@@ -50,7 +50,7 @@ const createDivs = function (sliderValor) {
         const touch = e.touches[0];
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
         if (element && element.classList.contains("itemSketch")) {
-          element.style.background = "black";
+          element.style.background = colorSelection;
         }
       }
     });
@@ -76,27 +76,24 @@ const changeGridSize = function () {
 slider.addEventListener("mouseup", changeGridSize);
 slider.addEventListener("touchend", changeGridSize);
 
-// *Color function
+// Eraser
 
-/* const addColor = function () {}; */
-
-// *Creating functions and events for different choices
-
-/* randomColor.addEventListener("click", function () {
-  colorSelection = "rainbow";
+eraser.addEventListener("click", () => {
+  colorSelection = "white";
+  selectColor.value = "#ffffff";
 });
-selectColor.addEventListener("click", function () {
-  colorSelection = "colorPickButton";
-});
-eraser.addEventListener("click", function () {
-  colorSelection = "eraser";
-}); */
 
-/* const getColorChoice = function () {
-  if (colorSelection === "rainbow") {
-    let randomN = Math.floor(Math.random() * 360);
-  color = `hsl(${randomN}, 100%, 50%)`;
-  itemSketch.style.backgroundColor = "blue";
-  }
-  
-}; */
+// Change color
+
+const paintDiv = function (div, color) {
+  div.style.background = color;
+};
+
+selectColor.addEventListener("change", function (e) {
+  colorSelection = e.target.value;
+});
+
+buttonBlack.addEventListener("click", () => {
+  selectColor.value = "#000000";
+  colorSelection = selectColor.value;
+});
