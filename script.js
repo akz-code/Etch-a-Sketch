@@ -4,6 +4,7 @@ const eraser = document.querySelector(".eraser");
 const selectColor = document.querySelector("#selectColor");
 const buttonBlack = document.querySelector(".black");
 const randomColor = document.querySelector(".randomColor");
+const resetButton = document.querySelector(".reset");
 
 let colorSelection = "black";
 
@@ -24,6 +25,11 @@ const createDivs = function (sliderValor) {
     itemSketch.classList.add("itemSketch");
 
     itemSketch.addEventListener("mousedown", () => {
+      if (colorSelection === "rainbow") {
+        paintDiv(itemSketch, getRandomColor());
+      } else {
+        paintDiv(itemSketch, colorSelection);
+      }
       mousedown = true;
     });
 
@@ -55,9 +61,9 @@ const createDivs = function (sliderValor) {
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
         if (element && element.classList.contains("itemSketch")) {
           if (colorSelection === "rainbow") {
-            element.style.background = getRandomColor(); // Usar color aleatorio
+            element.style.background = getRandomColor();
           } else {
-            element.style.background = colorSelection; // Usar color seleccionado
+            element.style.background = colorSelection;
           }
         }
       }
@@ -114,9 +120,21 @@ const getRandomColor = function () {
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
+  selectColor.value = color;
   return color;
 };
 
 randomColor.addEventListener("click", () => {
   colorSelection = "rainbow";
 });
+
+// Reset
+
+const getReset = () => {
+  const allDivs = document.querySelectorAll(".itemSketch");
+  allDivs.forEach((div) => {
+    div.style.background = "white";
+  });
+};
+
+resetButton.addEventListener("click", getReset);
