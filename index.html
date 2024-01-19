@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-a-Sketch</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <header><h1>Etch-a-Sketch</h1></header>
+    <main>
+      <br /><br /><br />
+      <div id="sketchContainer" class="sketchContainer"></div>
+      
+       <div id="controlsContainer" class="controlsContainer">
+         <div class="sliderDiv">
+           <input type="range" value="16" min="1" max="80" id="slider" />
+           <p class="sliderText">
+             Grid Size: <span class="sliderNumber"></span>
+           </p>
+         </div>
+         <div class="color">
+          Color: <input id="selectColor" value="user" type="color" />
+         </div>
+         <button class="eraser">
+          Eraser
+         </button>
+
+         <button class="randomColor">Random-Color</button>
+         <button class="reset">Reset</button>
+
+      </div>
+    </main>
+
+    <footer>Created by @Hakaizen</footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

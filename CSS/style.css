@@ -1,0 +1,97 @@
+/* *****************RESET************************* */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+p{
+  margin: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+/*********************** Basic Styles **************/
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  flex-grow: 1;
+  min-height: 100vh;
+  padding: 3rem;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 2rem;
+}
+
+.controlsContainer {
+  border: solid 2px;
+  padding: 2rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* .sliderDiv{
+  background-color: aqua;
+  padding: 0.5rem;
+  border-radius: 20px;
+} */
+
+
+.sketchContainer {
+  width: 40%;
+  height: auto;
+  margin: auto;
+  border: solid 1px;
+  border-radius: 6px;
+  
+}
+
+.itemSketch {
+  aspect-ratio: 1/1;
+  border: solid 1px rgba(0, 0, 0, 0.171);
+}
+
+.itemSketch:hover{
+  background-color: rgba(0, 255, 255, 0.123);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1000px){
+  .sketchContainer {
+    width: 60%;
+  }
+}
+
+@media (max-width: 680px){
+  .sketchContainer {
+    width: 100%;
+  }
+
+  main{
+    flex-direction: column;
+  }
+}
