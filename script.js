@@ -32,7 +32,11 @@ const createDivs = function (sliderValor) {
     });
     itemSketch.addEventListener("mousemove", (e) => {
       if (mousedown) {
-        paintDiv(itemSketch, colorSelection);
+        if (colorSelection === "rainbow") {
+          paintDiv(itemSketch, getRandomColor());
+        } else {
+          paintDiv(itemSketch, colorSelection);
+        }
       }
     });
 
@@ -50,7 +54,11 @@ const createDivs = function (sliderValor) {
         const touch = e.touches[0];
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
         if (element && element.classList.contains("itemSketch")) {
-          element.style.background = colorSelection;
+          if (colorSelection === "rainbow") {
+            element.style.background = getRandomColor(); // Usar color aleatorio
+          } else {
+            element.style.background = colorSelection; // Usar color seleccionado
+          }
         }
       }
     });
@@ -96,4 +104,19 @@ selectColor.addEventListener("change", function (e) {
 buttonBlack.addEventListener("click", () => {
   selectColor.value = "#000000";
   colorSelection = selectColor.value;
+});
+
+// Random color
+
+const getRandomColor = function () {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+randomColor.addEventListener("click", () => {
+  colorSelection = "rainbow";
 });
