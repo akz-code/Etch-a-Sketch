@@ -5,6 +5,7 @@ const selectColor = document.querySelector("#selectColor");
 const buttonBlack = document.querySelector(".black");
 const randomColor = document.querySelector(".randomColor");
 const resetButton = document.querySelector(".reset");
+const buttons = document.querySelectorAll("button");
 
 let colorSelection = "black";
 
@@ -75,6 +76,18 @@ const createDivs = function (sliderValor) {
 
 createDivs(16);
 
+// Muestra los bordes de los divs por un tiempo breve
+
+const showBorders = () => {
+  const divs = document.querySelectorAll('.itemSketch');
+  divs.forEach(div => div.classList.add('border-visible'));
+
+  // Establece el tiempo después del cual el borde desaparecerá
+  setTimeout(() => {
+    divs.forEach(div => div.classList.remove('border-visible'));
+  }, 150); 
+}
+
 //Change divs size
 
 const changeGridSize = function () {
@@ -89,12 +102,20 @@ const changeGridSize = function () {
 
 slider.addEventListener("mouseup", changeGridSize);
 slider.addEventListener("touchend", changeGridSize);
+slider.addEventListener("mouseup", showBorders);
+slider.addEventListener("touchend", showBorders);
 
 // Eraser
 
 eraser.addEventListener("click", () => {
   colorSelection = "white";
   selectColor.value = "#ffffff";
+
+  buttons.forEach((button) => {
+    button.style.background = "white";
+  });
+  eraser.style.background = "rgba(0, 0, 255, 0.274)";
+  buttonBlack.style.color = "black";
 });
 
 // Change color
@@ -105,11 +126,22 @@ const paintDiv = function (div, color) {
 
 selectColor.addEventListener("change", function (e) {
   colorSelection = e.target.value;
+  buttons.forEach((button) => {
+    button.style.background = "white";
+  });
+  buttonBlack.style.color = "black";
 });
 
 buttonBlack.addEventListener("click", () => {
   selectColor.value = "#000000";
   colorSelection = selectColor.value;
+
+  buttons.forEach((button) => {
+    button.style.background = "white";
+  });
+
+  buttonBlack.style.background = "black";
+  buttonBlack.style.color = "white";
 });
 
 // Random color
@@ -126,6 +158,12 @@ const getRandomColor = function () {
 
 randomColor.addEventListener("click", () => {
   colorSelection = "rainbow";
+
+  buttons.forEach((button) => {
+    button.style.background = "white";
+  });
+  randomColor.style.background = "rgba(0, 0, 255, 0.274)";
+  buttonBlack.style.color = "black";
 });
 
 // Reset

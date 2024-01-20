@@ -1,7 +1,5 @@
 /* *****************RESET************************* */
 
-/*! Poner el reset que compartió el midu */
-
 *,
 *::after,
 *::before {
@@ -22,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: rgba(0, 255, 255, 0.452);
 }
 
 header {
@@ -38,34 +37,31 @@ main {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  gap: 2rem;
-}
-
-.controlsContainer {
-  border: solid 2px;
-  padding: 2rem;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-evenly;
   gap: 1rem;
 }
 
-/* .sliderDiv{
-  background-color: aqua;
-  padding: 0.5rem;
-  border-radius: 20px;
-} */
+.controlsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}
 
+button{
+  min-width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+}
 
 .sketchContainer {
   width: 40%;
   height: auto;
-  margin: auto;
-  border: solid 1px;
+  /* border: solid 1px; */
   border-radius: 6px;
-  
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .itemSketch {
@@ -76,10 +72,20 @@ main {
   background-color: rgba(0, 255, 255, 0.774);
 }
 
+.border-visible {
+  border: .3px solid aquamarine;
+}
+
+
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: #000000;
+  color: white;
+  padding: 1rem;
+  font-size: .8rem;
 }
 
 
