@@ -1,3 +1,3 @@
 # Random Etch-a-Sketch
 
-Demo [here](https://aaron-kz.github.io/Etch-a-Sketch/)
+Demo [here](https://akz-code.github.io/Etch-a-Sketch/)
